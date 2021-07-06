@@ -1,5 +1,10 @@
 # Apodini Collector
 
+[![Build and Test](https://github.com/Apodini/ApodiniCollector/actions/workflows/build-and-test.yml/badge.svg)](https://github.com/Apodini/ApodiniCollector/actions/workflows/build-and-test.yml)
+[![codecov](https://codecov.io/gh/Apodini/ApodiniCollector/branch/develop/graph/badge.svg?token=HYmeGXzg9V)](https://codecov.io/gh/Apodini/ApodiniCollector)
+[![jazzy](https://raw.githubusercontent.com/Apodini/ApodiniCollector/gh-pages/badge.svg)](https://apodini.github.io/ApodiniCollector/)
+[![DOI](https://zenodo.org/badge/381725107.svg)](https://zenodo.org/badge/latestdoi/381725107)
+
 `ApodiniCollector` combines [Collector](https://github.com/Apodini/Collector) with the [Apodini](https://github.com/Apodini/Apodini) framework used to create web services. it allows you to create trace spans, record metrics, and provide them to Prometheus instances.
 
 ## Traces
