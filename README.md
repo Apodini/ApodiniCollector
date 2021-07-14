@@ -1,9 +1,9 @@
 # Apodini Collector
 
-[![Build and Test](https://github.com/Apodini/ApodiniCollector/actions/workflows/build-and-test.yml/badge.svg)](https://github.com/Apodini/ApodiniCollector/actions/workflows/build-and-test.yml)
+[![DOI](https://zenodo.org/badge/381725107.svg)](https://zenodo.org/badge/latestdoi/381725107)
 [![codecov](https://codecov.io/gh/Apodini/ApodiniCollector/branch/develop/graph/badge.svg?token=HYmeGXzg9V)](https://codecov.io/gh/Apodini/ApodiniCollector)
 [![jazzy](https://raw.githubusercontent.com/Apodini/ApodiniCollector/gh-pages/badge.svg)](https://apodini.github.io/ApodiniCollector/)
-[![DOI](https://zenodo.org/badge/381725107.svg)](https://zenodo.org/badge/latestdoi/381725107)
+[![Build and Test](https://github.com/Apodini/ApodiniCollector/actions/workflows/build-and-test.yml/badge.svg)](https://github.com/Apodini/ApodiniCollector/actions/workflows/build-and-test.yml)
 
 `ApodiniCollector` combines [Collector](https://github.com/Apodini/Collector) with the [Apodini](https://github.com/Apodini/Apodini) framework used to create web services. it allows you to create trace spans, record metrics, and provide them to Prometheus instances.
 
@@ -97,7 +97,7 @@ struct ExampleWebService: WebService {
 
 
 ## Contributing
-Contributions to this project are welcome. Please make sure to read the [contribution guidelines](https://github.com/Apodini/.github/blob/release/CONTRIBUTING.md) first.
+Contributions to this project are welcome. Please make sure to read the [contribution guidelines](https://github.com/Apodini/.github/blob/main/CONTRIBUTING.md) and the [contributor covenant code of conduct](https://github.com/Apodini/.github/blob/main/CODE_OF_CONDUCT.md) first.
 
 ## License
-This project is licensed under the MIT License. See [License](https://github.com/Apodini/ApodiniCollector/blob/release/LICENSE) for more information.
+This project is licensed under the MIT License. See [License](https://github.com/Apodini/ApodiniCollector/blob/develop/LICENSE) for more information.

@@ -1,16 +1,18 @@
 import Apodini
 import Collector
+import ApodiniHTTP
+import ApodiniVaporSupport
 
 
 private struct ConnectionExtractor: Extractor {
     func extract(key: String, from carrier: Connection) -> String? {
-        carrier.information[key]
+        carrier.information[httpHeader: key]
     }
 }
 
 private struct ResponseInjector<C: Encodable>: Injector {
     func inject(_ value: String, forKey key: String, into carrier: inout Response<C>) {
-        carrier.information.insert(.custom(key: key, rawValue: value))
+        carrier.information = carrier.information.union([AnyHTTPInformation(key: key, rawValue: value)])
     }
 }
 
