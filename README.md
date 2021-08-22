@@ -1,3 +1,13 @@
+<!--
+
+This source file is part of the Apodini Collector open source project
+
+SPDX-FileCopyrightText: 2021 Paul Schmiedmayer and the project authors (see CONTRIBUTORS.md) <paul.schmiedmayer@tum.de>
+
+SPDX-License-Identifier: MIT
+
+-->
+
 # Apodini Collector
 
 [![DOI](https://zenodo.org/badge/381725107.svg)](https://zenodo.org/badge/latestdoi/381725107)
