@@ -23,6 +23,11 @@ private struct HTTPClientRequestModifier: Extractor, Injector {
 
 
 extension Tracer {
+    /// Create a `Span` based on a reference from a `Request`
+    /// - Parameters:
+    ///   - name: The name of the `Span`
+    ///   - request: The request the `Span` reference (e.g. parent `Span`) is created from
+    /// - Returns: The newly created `Span`
     public func span(name: String, from request: HTTPClient.Request) -> Span {
         span(name: name, from: request, using: HTTPClientRequestModifier())
     }
@@ -30,6 +35,8 @@ extension Tracer {
 
 
 extension Span {
+    /// Propagate the `Span` in the `Request`
+    /// - Parameter request: The `Request` the span is propagate in
     public func propagate(in request: inout HTTPClient.Request) {
         propagate(in: &request, using: HTTPClientRequestModifier())
     }

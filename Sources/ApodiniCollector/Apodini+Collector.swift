@@ -8,8 +8,7 @@
 
 import Apodini
 import Collector
-import ApodiniHTTP
-import ApodiniVaporSupport
+import ApodiniHTTPProtocol
 
 
 private struct ConnectionExtractor: Extractor {
@@ -20,17 +19,24 @@ private struct ConnectionExtractor: Extractor {
 
 private struct ResponseInjector<C: Encodable>: Injector {
     func inject(_ value: String, forKey key: String, into carrier: inout Response<C>) {
-        carrier.information = carrier.information.union([AnyHTTPInformation(key: key, rawValue: value)])
+        carrier.information = carrier.information.merge(with: [AnyHTTPInformation(key: key, rawValue: value)])
     }
 }
 
 extension Tracer {
+    /// Create a `Span` based on a reference from a `Connection`
+    /// - Parameters:
+    ///   - name: The name of the `Span`
+    ///   - request: The connection the `Span` reference (e.g. parent `Span`) is created from
+    /// - Returns: The newly created `Span`
     public func span(name: String, from connection: Connection) -> Span {
         span(name: name, from: connection, using: ConnectionExtractor())
     }
 }
 
 extension Span {
+    /// Propagate the `Span` in the `Response`
+    /// - Parameter response: The `Connection` the span is propagate in
     public func propagate<C: Encodable>(in response: inout Response<C>) {
         propagate(in: &response, using: ResponseInjector<C>())
     }
