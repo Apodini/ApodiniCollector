@@ -1,4 +1,12 @@
-// swift-tools-version:5.4
+// swift-tools-version:5.5
+
+//
+// This source file is part of the Apodini Collector open source project
+//
+// SPDX-FileCopyrightText: 2021 Paul Schmiedmayer and the project authors (see CONTRIBUTORS.md) <paul.schmiedmayer@tum.de>
+//
+// SPDX-License-Identifier: MIT
+//
 
 import PackageDescription
 
@@ -6,7 +14,7 @@ import PackageDescription
 let package = Package(
     name: "ApodiniCollector",
     platforms: [
-        .macOS(.v10_15)
+        .macOS(.v12)
     ],
     products: [
         .library(
@@ -15,8 +23,8 @@ let package = Package(
         )
     ],
     dependencies: [
-        .package(url: "https://github.com/Apodini/Apodini.git", .upToNextMinor(from: "0.3.0")),
-        .package(url: "https://github.com/Apodini/ApodiniAsyncHTTPClient.git", .upToNextMinor(from: "0.2.0")),
+        .package(url: "https://github.com/Apodini/Apodini.git", .upToNextMinor(from: "0.4.0")),
+        .package(url: "https://github.com/Apodini/ApodiniAsyncHTTPClient.git", .upToNextMinor(from: "0.3.0")),
         .package(url: "https://github.com/Apodini/Collector.git", .upToNextMinor(from: "0.1.0")),
     ],
     targets: [
