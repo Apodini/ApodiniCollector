@@ -6,8 +6,8 @@
 // SPDX-License-Identifier: MIT
 //
 
-import XCTest
 @testable import ApodiniCollector
+import XCTest
 
 
 final class ApodiniCollectorTests: XCTestCase {
