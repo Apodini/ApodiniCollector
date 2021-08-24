@@ -7,8 +7,8 @@
 //
 
 import Apodini
-import Collector
 import ApodiniHTTPProtocol
+import Collector
 
 
 private struct ConnectionExtractor: Extractor {
