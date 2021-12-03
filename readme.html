@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>README  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset="utf-8">
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+    
+    <script src="js/lunr.min.js" defer></script>
+    <script src="js/typeahead.jquery.js" defer></script>
+    <script src="js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+
+
+    <a title="README  Reference"></a>
+
+    <header class="header">
+      <p class="header-col header-col--primary">
+        <a class="header-link" href="index.html">
+          ApodiniCollector Docs
+        </a>
+         (83% documented)
+      </p>
+    
+      <div class="header-col--secondary">
+        <form role="search" action="search.json">
+          <input type="text" placeholder="Search documentation" data-typeahead>
+        </form>
+      </div>
+    
+        <p class="header-col header-col--secondary">
+          <a class="header-link" href="https://github.com/Apodini/ApodiniCollector">
+            <img class="header-icon" src="img/gh.png" alt="GitHub"/>
+            View on GitHub
+          </a>
+        </p>
+    
+    </header>
+
+    <p class="breadcrumbs">
+      <a class="breadcrumb" href="index.html">ApodiniCollector Reference</a>
+      <img class="carat" src="img/carat.png" alt=""/>
+      README  Reference
+    </p>
+
+    <div class="content-wrapper">
+      <nav class="navigation">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Guides.html">Guides</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="contributors.html">CONTRIBUTORS</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="readme.html">README</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Extensions/Application.html">Application</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Extensions/Span.html">Span</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Extensions/Tracer.html">Tracer</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/MetricsHandler.html">MetricsHandler</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/TracerConfiguration.html">TracerConfiguration</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+
+        <section class="section">
+          <div class="section-content top-matter">
+            
+            <!--
+
+This source file is part of the Apodini Collector open source project
+
+SPDX-FileCopyrightText: 2021 Paul Schmiedmayer and the project authors (see CONTRIBUTORS.md) <paul.schmiedmayer@tum.de>
+
+SPDX-License-Identifier: MIT
+
+&ndash;>
+<h1 id='apodini-collector' class='heading'>Apodini Collector</h1>
+
+<p><a href="https://zenodo.org/badge/latestdoi/381725107"><img src="https://zenodo.org/badge/381725107.svg" alt="DOI"></a>
+<a href="https://codecov.io/gh/Apodini/ApodiniCollector"><img src="https://codecov.io/gh/Apodini/ApodiniCollector/branch/develop/graph/badge.svg?token=HYmeGXzg9V" alt="codecov"></a>
+<a href="https://apodini.github.io/ApodiniCollector/"><img src="https://raw.githubusercontent.com/Apodini/ApodiniCollector/gh-pages/badge.svg" alt="jazzy"></a>
+<a href="https://github.com/Apodini/ApodiniCollector/actions/workflows/build-and-test.yml"><img src="https://github.com/Apodini/ApodiniCollector/actions/workflows/build-and-test.yml/badge.svg" alt="Build and Test"></a></p>
+
+<p><code>ApodiniCollector</code> combines <a href="https://github.com/Apodini/Collector">Collector</a> with the <a href="https://github.com/Apodini/Apodini">Apodini</a> framework used to create web services. it allows you to create trace spans, record metrics, and provide them to Prometheus instances.</p>
+<h2 id='traces' class='heading'>Traces</h2>
+
+<p>Apodini Collector provides integration in Apodini to configure and create trace spans in the web service. You can create a <code><a href="Structs/TracerConfiguration.html">TracerConfiguration</a></code> that defines global settings for the traces in the <code>WebService</code> configuration.</p>
+<pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">Apodini</span>
+<span class="kd">import</span> <span class="kt">ApodiniCollector</span>
+<span class="kd">import</span> <span class="kt">ArgumentParser</span>
+<span class="kd">import</span> <span class="kt">Foundation</span>
+
+
+<span class="kd">@main</span>
+<span class="kd">struct</span> <span class="kt">ExampleWebService</span><span class="p">:</span> <span class="kt">WebService</span> <span class="p">{</span>
+    <span class="kd">@Option</span> <span class="k">var</span> <span class="nv">jaegerCollectorURL</span> <span class="o">=</span> <span class="kt">URL</span><span class="p">(</span><span class="nv">string</span><span class="p">:</span> <span class="s">"http://localhost:14250"</span><span class="p">)</span><span class="o">!</span> <span class="c1">// swiftlint:disable:this force_unwrapping</span>
+
+
+    <span class="k">var</span> <span class="nv">configuration</span><span class="p">:</span> <span class="kt">Apodini</span><span class="o">.</span><span class="kt">Configuration</span> <span class="p">{</span>
+        <span class="kt">TracerConfiguration</span><span class="p">(</span>
+            <span class="nv">serviceName</span><span class="p">:</span> <span class="s">"example"</span><span class="p">,</span>
+            <span class="nv">jaegerURL</span><span class="p">:</span> <span class="n">jaegerCollectorURL</span>
+        <span class="p">)</span>
+
+        <span class="c1">// ...</span>
+    <span class="p">}</span>
+
+
+    <span class="k">var</span> <span class="nv">content</span><span class="p">:</span> <span class="n">some</span> <span class="kt">Component</span> <span class="p">{</span>
+        <span class="kt">Group</span><span class="p">(</span><span class="s">"metrics"</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kt">MetricsHandler</span><span class="p">()</span>
+        <span class="p">}</span>
+        <span class="c1">// ...</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+
+<p>By using Apodini Collector, you can access the current tracer using the Apodini <code>@Environment</code>: <code>@Environment(\.tracer) var tracer: Tracer</code></p>
+
+<p>Apodini Collector exposes the tracing API defined in <a href="https://github.com/Apodini/Collector">Collector</a> and allows you to propargate the spans in HTTPRequests of <a href="https://github.com/AsyncHttpClient/async-http-client/">AsyncHTTPClient</a> or propargated in Apodini <code>Responses</code>:</p>
+<pre class="highlight swift"><code><span class="k">var</span> <span class="nv">request</span> <span class="o">=</span> <span class="k">try</span> <span class="kt">HTTPClient</span><span class="o">.</span><span class="kt">Request</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="s">"http://ase.in.tum.de/schmiedmayer"</span><span class="p">)</span>
+<span class="k">let</span> <span class="nv">span</span> <span class="o">=</span> <span class="n">tracer</span><span class="o">.</span><span class="nf">span</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="s">"Example"</span><span class="p">)</span>
+<span class="n">span</span><span class="o">.</span><span class="nf">propagate</span><span class="p">(</span><span class="nv">in</span><span class="p">:</span> <span class="o">&amp;</span><span class="n">request</span><span class="p">)</span>
+</code></pre>
+
+<p>In addition spans can be retrieved from <a href="https://github.com/AsyncHttpClient/async-http-client/">AsyncHTTPClient</a> responses or the Apodini connection context:</p>
+<pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">Apodini</span>
+<span class="kd">import</span> <span class="kt">ApodiniCollector</span>
+
+
+<span class="kd">struct</span> <span class="kt">ExampleHandler</span><span class="p">:</span> <span class="kt">Handler</span> <span class="p">{</span>
+    <span class="kd">@Environment(\.tracer)</span> <span class="k">var</span> <span class="nv">tracer</span><span class="p">:</span> <span class="kt">Tracer</span>
+    <span class="kd">@Environment(\.connection)</span> <span class="k">var</span> <span class="nv">connection</span><span class="p">:</span> <span class="kt">Connection</span>
+
+
+    <span class="kd">func</span> <span class="nf">handle</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">String</span> <span class="p">{</span>
+        <span class="k">let</span> <span class="nv">span</span> <span class="o">=</span> <span class="n">tracer</span><span class="o">.</span><span class="nf">span</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="s">"location"</span><span class="p">,</span> <span class="nv">from</span><span class="p">:</span> <span class="n">connection</span><span class="p">)</span>
+        <span class="c1">// ...</span>
+    <span class="p">}</span>
+</code></pre>
+<h2 id='metrics' class='heading'>Metrics</h2>
+
+<p>Apodini Collector exports the metrics creation API defined by the <a href="https://github.com/Apodini/Collector">Collector</a> framework.</p>
+
+<p>In addition to exporting the <a href="https://github.com/Apodini/Collector">Collector</a> API surface Apodini Collector provides a <code><a href="Structs/MetricsHandler.html">MetricsHandler</a></code> <code>Handler</code> enabling Prometheus instances to retrieve metrics information from the web service instance:</p>
+<pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">Apodini</span>
+<span class="kd">import</span> <span class="kt">ApodiniCollector</span>
+
+
+<span class="kd">@main</span>
+<span class="kd">struct</span> <span class="kt">ExampleWebService</span><span class="p">:</span> <span class="kt">WebService</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nv">configuration</span><span class="p">:</span> <span class="kt">Apodini</span><span class="o">.</span><span class="kt">Configuration</span> <span class="p">{</span>
+        <span class="c1">// ...</span>
+    <span class="p">}</span>
+
+
+    <span class="k">var</span> <span class="nv">content</span><span class="p">:</span> <span class="n">some</span> <span class="kt">Component</span> <span class="p">{</span>
+        <span class="kt">Group</span><span class="p">(</span><span class="s">"metrics"</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kt">MetricsHandler</span><span class="p">()</span>
+        <span class="p">}</span>
+        <span class="c1">// ...</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+<h2 id='contributing' class='heading'>Contributing</h2>
+
+<p>Contributions to this project are welcome. Please make sure to read the <a href="https://github.com/Apodini/.github/blob/main/CONTRIBUTING.md">contribution guidelines</a> and the <a href="https://github.com/Apodini/.github/blob/main/CODE_OF_CONDUCT.md">contributor covenant code of conduct</a> first.</p>
+<h2 id='license' class='heading'>License</h2>
+
+<p>This project is licensed under the MIT License. See <a href="https://github.com/Apodini/ApodiniCollector/blob/develop/LICENSE">License</a> for more information.</p>
+
+          </div>
+        </section>
+
+
+      </article>
+    </div>
+    <section class="footer">
+      <p>&copy; 2021 <a class="link" href="https://github.com/Apodini" target="_blank" rel="external noopener">Paul Schmiedmayer</a>. All rights reserved. (Last updated: 2021-12-03)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.14.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
+    </section>
+  </body>
+</html>

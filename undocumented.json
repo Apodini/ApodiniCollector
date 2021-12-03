@@ -1,0 +1,19 @@
+{
+  "warnings": [
+    {
+      "file": "/Users/runner/work/ApodiniCollector/ApodiniCollector/Sources/ApodiniCollector/MetricsHandler.swift",
+      "line": 13,
+      "symbol": "MetricsHandler",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/ApodiniCollector/ApodiniCollector/Sources/ApodiniCollector/MetricsHandler.swift",
+      "line": 17,
+      "symbol": "MetricsHandler.init()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    }
+  ],
+  "source_directory": "/Users/runner/work/ApodiniCollector/ApodiniCollector"
+}
